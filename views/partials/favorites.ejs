@@ -1,0 +1,21 @@
+<% include header %>
+<style>
+    body {
+    background-image: url('<%=imageURLs[0]%>');
+    }
+</style>
+<body>
+    
+<a href="/" id="searchLink"> Back To Search</a>
+<h1 id="favHeader">Favorite Pics</h1>
+
+<% rows.forEach(function(row){ %>
+    <a class="keywordLink"><%= row['keyword'] %></a>
+<% }) %>
+
+<hr>
+<div class="imageContainer">
+    <div id="favorites" class="favoriteIcon"></div>
+</div>
+
+<% include footer %>

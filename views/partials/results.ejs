@@ -1,0 +1,22 @@
+<% include header %>
+<style>
+    body {
+    background-image: url('<%=imageURLs[0]%>');
+    }
+</style>
+<form action="/search">
+    <input type="text" id="keyword" value="<%=keyword%>" placeholder="Type Keyword" name="keyword"/>
+    <button>Search</button>
+    <a id="favLink" href="./displayKeywords">See Favorites</a>
+</form>
+
+<% imageURLs.forEach(function(imageURLs, i){ %>
+
+   <%- (i%3 == 0)?'<br>':''%>
+   <div class="imageContainer">
+    <img class="image" src='<%=imageURLs%>' width="200" height="200">
+    <img class="favoriteIcon" src="img/favorite.png" width="20">
+   </div>
+<% })%>
+
+<% include footer %>
