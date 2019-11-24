@@ -10,6 +10,7 @@ body {
 input,
 button {
     font-size: 1.3em;
+    border-radius: 25px;
     
 }
 
@@ -17,6 +18,7 @@ main {
     background-color: rgba(0,0,0,0.75);
     width: 50%;
     margin: 0 auto;/*centers content*/
+    border-radius: 25px;
 }
 
 h1 {
@@ -28,6 +30,7 @@ h1 {
     background-color: rgba(250,250,250, 0.75);
     color: red;
     font-size: 0.8em;
+    border-radius: 10px;
    
 }
 
@@ -39,6 +42,8 @@ h1 {
     background-color: rgba(250,250,250, 0.75);
     display: inline-block;
     padding: 15px;
+    border-radius: 25px;
+    margin: 5px;
 }
 
 #favHeader {
