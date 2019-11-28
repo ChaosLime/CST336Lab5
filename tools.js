@@ -36,22 +36,33 @@ module.exports = {
      */
     getRandomImages: function (keyword, imageCount){
         var requestURL = "https://api.unsplash.com/photos/random?query="+keyword+"&count="+imageCount+"&client_id=5991dbc45fea39d95fbd6f48422cc704fb11b861750959a6918de01df02e2174&orientation=landscape";
-        
         return new Promise( function(resolve, reject){
+            var imageURL = [];
              request(requestURL,function(error, response, body){
                 if(!error){
                     var parsedData = JSON.parse(body);
-                    var imageURL = [];
-                    for (let i = 0; i < imageCount; i++){
-                        imageURL.push(parsedData[i]['urls']['regular']);
+                    var errorParse = JSON.parse('{"errors:":["No photos found."]}');
+                    //console.log(errorParse);
+                    if (parsedData.errors != "No photos found."){
+                        if(imageURL != null && parsedData[0].urls.regular != errorParse){
+                        for (let i = 0; i < imageCount; i++){
+                        imageURL.push(parsedData[i].urls.regular);
+                        }
+                        resolve(imageURL);
                     }
-                    resolve(imageURL);
+                    else{
+                        alert("Invalid Search Result, please try again.");
+                        }
                     
+                    }
                 }else{
+                    
                     console.log("error: ",error);
                 }
             });//request   
-        });//promise
+        });//promise  
+        
+        
         },
      /**
       * creates database connection
